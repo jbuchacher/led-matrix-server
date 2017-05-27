@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
+var SocketController = require('./controllers/SocketController');
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,5 +31,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.io = require('socket.io')();
+SocketController(app.io)
 
 module.exports = app;
