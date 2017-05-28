@@ -16,6 +16,7 @@ function PixelController() {
     [ off, off, off, off, off, off, off, off ],
   ]
 
+  sense.setRotation(90);
   sense.setPixels(pixels)
 
   function setPixels(state, column, row, rgb) {
