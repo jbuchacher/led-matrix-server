@@ -16,8 +16,10 @@ function PixelController() {
     [ off, off, off, off, off, off, off, off ],
   ]
 
-  sense.setRotation(90);
-  sense.setPixels(pixels)
+  function resetPixels() {
+    sense.setRotation(90);
+    sense.setPixels(pixels)
+  }
 
   function setPixels(state, column, row, rgb) {
     console.log({ message: "setPixels", state, column, row, rgb })
@@ -32,6 +34,8 @@ function PixelController() {
   function rgbToDecimalRgb(value) {
     return parseInt(multiply(value, 255))
   }
+
+  resetPixels()
 
   return {
     setPixels,

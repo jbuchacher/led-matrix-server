@@ -10,6 +10,10 @@ function SocketController(io) {
       console.log('Socket disconnected:')
     })
 
+    socket.on('resetPixels', function() {
+      pixelController.resetPixels()
+    })
+
     socket.on('setPixel', function({ state, column, row, rgb }) {
       pixelController.setPixels(state, column, row, rgb)
     })
