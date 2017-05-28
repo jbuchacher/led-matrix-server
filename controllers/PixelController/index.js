@@ -27,7 +27,7 @@ function PixelController() {
   }
 
   function rgbToDecimalRgb(value) {
-    return multiply(value, 255)
+    return parseInt(multiply(value, 255))
   }
 
   return {
