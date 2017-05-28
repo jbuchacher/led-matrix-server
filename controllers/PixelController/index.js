@@ -38,6 +38,7 @@ function PixelController() {
   resetPixels()
 
   return {
+    resetPixels,
     setPixels,
   }
 }
