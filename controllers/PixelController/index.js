@@ -20,7 +20,7 @@ function PixelController() {
 
   function resetPixels() {
     sense.setRotation(90);
-    sense.setPixels(allOffPixels)
+    sense.setPixels(flattenDepth(allOffPixels, 1))
   }
 
   function setPixels(state, column, row, rgb) {
