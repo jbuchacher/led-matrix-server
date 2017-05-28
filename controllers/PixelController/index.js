@@ -1,4 +1,4 @@
-/* const sense = require('node-sense-hat').Leds*/
+const sense = require('node-sense-hat').Leds
 const map = require('lodash/map')
 const multiply = require('lodash/multiply')
 const flattenDepth = require('lodash/flattenDepth')
@@ -21,7 +21,9 @@ function PixelController() {
     var color = rgb.map(rgbToDecimalRgb)
     pixels[row][column] = color
 
-    console.log(flattenDepth(pixels, 1))
+    var flattenedPixels = flattenDepth(pixels, 1)
+    console.log(flattenedPixels)
+    sense.setPixels(flattenedPixels)
   }
 
   function rgbToDecimalRgb(value) {
