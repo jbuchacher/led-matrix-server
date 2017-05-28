@@ -5,7 +5,7 @@ const flattenDepth = require('lodash/flattenDepth')
 
 function PixelController() {
   var off = [0, 0, 0]
-  var pixels = [
+  var allOffPixels = [
     [ off, off, off, off, off, off, off, off ],
     [ off, off, off, off, off, off, off, off ],
     [ off, off, off, off, off, off, off, off ],
@@ -16,17 +16,19 @@ function PixelController() {
     [ off, off, off, off, off, off, off, off ],
   ]
 
+  var pixelState = allOffPixels.slice()
+
   function resetPixels() {
     sense.setRotation(90);
-    sense.setPixels(pixels)
+    sense.setPixels(allOffPixels)
   }
 
   function setPixels(state, column, row, rgb) {
     console.log({ message: "setPixels", state, column, row, rgb })
     var color = rgb.map(rgbToDecimalRgb)
-    pixels[row][column] = color
+    pixelState[row][column] = color
 
-    var flattenedPixels = flattenDepth(pixels, 1)
+    var flattenedPixels = flattenDepth(pixelState, 1)
     console.log(flattenedPixels)
     sense.setPixels(flattenedPixels)
   }
